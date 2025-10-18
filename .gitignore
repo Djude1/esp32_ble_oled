@@ -1,0 +1,18 @@
+# Arduino build files
+*.ino.cpp
+*.elf
+*.bin
+*.eep
+*.hex
+*.map
+
+# Build directories
+build/
+__pycache__/
+.pio/
+.vscode/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
