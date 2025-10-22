@@ -19,7 +19,7 @@ https://www.notion.so/Esp32_ble_oled-28fcd2f379818098b837f54097551962?source=cop
 
 ## 🧠 功能說明
 
-1. 使用 ESP32 內建藍牙功能 (`BluetoothSerial`)，建立藍牙連線。
+1. 使用 #include <BLEDevice.h>，建立藍牙連線。
 2. 透過手機或電腦的藍牙終端機傳送文字。
 3. 顯示文字於 OLED 螢幕，支援：
    - 中文（使用 `u8g2_font_wqy12_t_gb2312` 字型）
