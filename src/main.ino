@@ -74,16 +74,24 @@ void loop() {
 
     if (c == '\n' || c == '\r') {
       if (btMessage.length() > 0) {
-        Serial.print("📩 收到文字：");
-        Serial.println(btMessage);
+        
+        if (btMessage.equalsIgnoreCase("CLEAR") || btMessage.equalsIgnoreCase("RESET")) {
+          u8g2.clearBuffer();
+          u8g2.sendBuffer();
+          // 在序列埠顯示，確認指令已收到
+          Serial.println("🗑️ 收到重置指令，螢幕已清空。");
+        } 
+        else {
+          Serial.print("📩 收到文字：");
+          Serial.println(btMessage);
 
-        // 顯示文字（自動換行）
-        u8g2.clearBuffer();
-        u8g2.setFont(u8g2_font_wqy12_t_gb2312);
-        drawWrappedText(btMessage.c_str(), 0, 16, 16, 128);
-        u8g2.sendBuffer();
-
-        btMessage = "";
+          u8g2.clearBuffer();
+          u8g2.setFont(u8g2_font_wqy12_t_gb2312);
+          drawWrappedText(btMessage.c_str(), 0, 16, 16, 128);
+          u8g2.sendBuffer();
+        }
+        
+        btMessage = ""; // 無論如何都清空緩衝區
       }
     } else {
       btMessage += c;
